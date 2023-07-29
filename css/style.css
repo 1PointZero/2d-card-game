@@ -1,0 +1,204 @@
+#game-container-1D {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/*1D Card */
+.card {
+  width: 800px;
+  height: 800px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 20px;
+}
+
+
+/*Zone Page */
+button {
+  margin: 5px;
+}
+
+.body-zone {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 0;
+  /* margin-bottom: 1000px */
+}
+
+header {
+  background-color: #333;
+  color: white;
+  padding: 2rem;
+  text-align: center;
+}
+
+.main-image {
+  width: 100%;
+  max-width: 100%;
+  display: block;
+  margin: 0rem auto;
+  transition: filter 0.3s;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.grid-section {
+  padding: 3rem 0;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  justify-content: center;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.grid-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  width: 100%;
+  min-width: 200px;
+  height: 200px;
+  border-radius: 10px; 
+}
+
+.grid-item img {
+  width: 100%;
+  height: 200px;
+  min-width: 200px;
+  display: block;
+  transition: all 0.3s;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay h3 {
+  color: white;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.overlay p {
+  color: white;
+  font-size: 1rem;
+  margin: 0;
+  margin-top: 0.5rem;
+  text-align: left;
+}
+
+.text-wrapper {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.grid-item:hover {
+  transform: translateY(-3px); /* Add this line to move the grid item slightly up on hover */
+}
+
+.grid-item:hover img {
+  transform: scale(1.1);
+  filter: blur(2px);
+}
+
+.grid-item:hover .overlay {
+  opacity: 1;
+}
+
+.bottom-margin{
+  margin: 100px;
+}
+
+
+/* Footer*/
+.site-footer {
+  background-color: #888;
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.site-footer.show-footer {
+  opacity: 1;
+}
+
+footer {
+  background-color: #a5a5a5;
+  color: #fff;
+  padding: 15px;
+  text-align: center;
+  font-size: 1rem;
+  position: relative;
+}
+
+
+/* New CSS */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* add this to ensure that body and html are full height as well */
+}
+
+#game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  flex-grow: 1;
+  margin: 0 auto;
+  height: 100vh; /* Changes here */
+}
+
+#game-panel {
+  height: 2cm;
+  background: #f00;  /* Red for visibility, change as needed */
+  width: 100%;
+}
+
+#game-world {
+  flex-grow: 1; /* Take up remaining space after subtracting the statusBar and cardBackground heights */
+  background: rgb(29, 160, 29, 0.1);  /* Green for visibility, change as needed */
+  width: 100%;
+  overflow: auto; 
+  height: 65%;
+  min-height:300px
+}
+
+#game-table {
+  flex-basis: 45%; /* This will make cardBackground take up 45% of the remaining space after statusBar */
+  background:  rgba(54, 65, 87, 0.5);  /* Blue for visibility, change as needed */
+  width: 100%;
+  height: 35%;
+  overflow: auto; /* if you want it to be scrollable */
+}

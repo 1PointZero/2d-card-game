@@ -1,0 +1,65 @@
+{"cards": [{
+            "id": "Card1",
+            "image":{
+                "path": "zone/level/",
+                "name": "ForestMountainCommonCard1.png",
+                "id": "Card1"
+            },
+            "properties": {
+                "zone" : "zone1",
+                "level": "level1",
+                "type": "forest",
+                "subtype": "cave",         
+                "codition": "weather",
+                "daytime": "noon"
+            },
+            "interaction": {
+                "rarity": "common",
+                "ActionA": {
+                    "actionA": "Lumber",
+                    "actionB": "Stone",
+                    "actionC": "" ,
+                    "actionD": ""
+                },
+                "actionB": {
+                    "actionA": "Fauna",
+                    "actionB": "Flora",
+                    "actionC": "Cave",
+                    "actionD": ""
+                }
+            }
+        },
+        {
+        "id": "card2",
+           "image":{
+                "path": "zone/level/",
+               "name": "ForestSwampCommonCard2.png",
+               "id": "Card2"
+           },
+           "properties": {
+               "zone" : "zone1",
+               "level": "level1",
+               "type": "forest",
+               "subtype": "cave",         
+               "codition": "weather",
+               "daytime": "noon"
+           },
+           "interaction": {
+               "rarity": "common",
+               "ActionA": {
+                   "actionA": "Lumber",
+                   "actionB": "Stone",
+                   "actionC": "" ,
+                   "actionD": ""
+               },
+               "actionB": {
+                   "actionA": "Fauna",
+                   "actionB": "Flora",
+                   "actionC": "Cave",
+                   "actionD": ""
+               }
+           }
+                  
+       }
+
+]}
