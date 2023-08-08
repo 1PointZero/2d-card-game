@@ -6,58 +6,49 @@ export default class World extends Phaser.Scene {
   }
 
   preload() {
-    this.load.image("block", "../../assets/images/BasicTile2.png");
+    for (let i = 1; i < 9; i++) {
+      this.load.image(
+        `block${i}`,
+        `../../assets/images/forestTiles/Tile${i}.png`
+      );
+    }
   }
 
   create() {
     this.input.mouse.disableContextMenu();
-    this.isoGroup = this.add.group();
+
+    const widthOffset = 64 + 0;
+    const heightOffset = 37 + 0; // tan(30°)x64
 
     for (let i = 0; i < 30; i++) {
       for (let j = 0; j < 30; j++) {
+        // Randomly choose an image key
+        const imageKey = `block${Phaser.Math.Between(1, 8)}`;
+
         const block = this.add
-          .image((i - j) * 64, (i + j) * 32, "block")
-          .setScale(0.115);
-        block.setInteractive(); // This line makes the block interactive
-        block.clicked = false;
+          .image((i - j) * widthOffset, (i + j) * heightOffset, imageKey) // Using new offsets
+          .setScale(1);
+        block.setInteractive();
+
+        // Define the isometric hit area
+        // Define the isometric hit area
+        const hitArea = new Phaser.Geom.Polygon([
+          new Phaser.Geom.Point(128, 32), // bottom of the isometric block
+          new Phaser.Geom.Point(128, 32 + heightOffset), // right corner
+          new Phaser.Geom.Point(0, 32 + 2 * heightOffset), // top
+          new Phaser.Geom.Point(0, 32 + heightOffset), // left corner
+        ]);
+
+        block.setInteractive(hitArea, Phaser.Geom.Polygon.Contains);
 
         // Event handler for hover effect
         block.on("pointerover", () => {
-          if (!block.clicked) {
-            // Only move the block up if it hasn't been clicked
-            block.y -= 5; // Reduced the hover effect by half
-          }
+          block.y -= 10;
         });
 
         block.on("pointerout", () => {
-          if (!block.clicked) {
-            // Only move the block back down if it hasn't been clicked
-            block.y += 5; // Moves the block back down
-          }
+          block.y += 10;
         });
-
-        // Event handler for click effect
-        block.on("pointerdown", () => {
-          if (this.currentClickedBlock && this.currentClickedBlock !== block) {
-            // If there's a previously clicked block and it's not the current one, move it back down
-            this.currentClickedBlock.y += 5;
-            this.currentClickedBlock.clicked = false;
-          }
-
-          if (block.clicked) {
-            // If the block was clicked, move it back down
-            block.y += 5;
-            block.clicked = false;
-          } else {
-            // If the block wasn't clicked, move it up
-            block.y -= 5;
-            block.clicked = true;
-          }
-
-          this.currentClickedBlock = block;
-        });
-
-        this.isoGroup.add(block);
       }
     }
 
@@ -93,9 +84,9 @@ export default class World extends Phaser.Scene {
 
     this.input.on("wheel", (pointer, currentlyOver, dx, dy, dz, event) => {
       if (dy < 0) {
-        this.cameras.main.zoom *= 1.1;
+        this.cameras.main.zoom *= 1.5;
       } else {
-        this.cameras.main.zoom /= 1.1;
+        this.cameras.main.zoom /= 1.5;
       }
       // clamp the zoom to reasonable values
       this.cameras.main.zoom = Phaser.Math.Clamp(
