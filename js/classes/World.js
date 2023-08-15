@@ -6,10 +6,10 @@ export default class World extends Phaser.Scene {
   }
 
   preload() {
-    for (let i = 1; i < 9; i++) {
+    for (let i = 1; i <= 13; i++) {
       this.load.image(
         `block${i}`,
-        `../../assets/images/forestTiles/Tile${i}.png`
+        `../../assets/images/tileTesting/Tile${i}.png`
       );
     }
   }
@@ -17,13 +17,13 @@ export default class World extends Phaser.Scene {
   create() {
     this.input.mouse.disableContextMenu();
 
-    const widthOffset = 64 + 0;
-    const heightOffset = 37 + 0; // tan(30°)x64
+    const widthOffset = 64 * 3.125 * 1.1 + 0;
+    const heightOffset = 37 * 3.125 * 1.1 + 0; // tan(30°)x64    //3.125 for 400
 
-    for (let i = 0; i < 30; i++) {
-      for (let j = 0; j < 30; j++) {
+    for (let i = 0; i < 10; i++) {
+      for (let j = 0; j < 10; j++) {
         // Randomly choose an image key
-        const imageKey = `block${Phaser.Math.Between(1, 8)}`;
+        const imageKey = `block${Phaser.Math.Between(1, 13)}`;
 
         const block = this.add
           .image((i - j) * widthOffset, (i + j) * heightOffset, imageKey) // Using new offsets
@@ -31,15 +31,15 @@ export default class World extends Phaser.Scene {
         block.setInteractive();
 
         // Define the isometric hit area
-        // Define the isometric hit area
-        const hitArea = new Phaser.Geom.Polygon([
-          new Phaser.Geom.Point(128, 32), // bottom of the isometric block
-          new Phaser.Geom.Point(128, 32 + heightOffset), // right corner
-          new Phaser.Geom.Point(0, 32 + 2 * heightOffset), // top
-          new Phaser.Geom.Point(0, 32 + heightOffset), // left corner
-        ]);
+        // // Define the isometric hit area
+        // const hitArea = new Phaser.Geom.Polygon([
+        //   new Phaser.Geom.Point(128, 32), // bottom of the isometric block
+        //   new Phaser.Geom.Point(128, 32 + heightOffset), // right corner
+        //   new Phaser.Geom.Point(0, 32 + 2 * heightOffset), // top
+        //   new Phaser.Geom.Point(0, 32 + heightOffset), // left corner
+        // ]);
 
-        block.setInteractive(hitArea, Phaser.Geom.Polygon.Contains);
+        // block.setInteractive(hitArea, Phaser.Geom.Polygon.Contains);
 
         // Event handler for hover effect
         block.on("pointerover", () => {
@@ -84,15 +84,15 @@ export default class World extends Phaser.Scene {
 
     this.input.on("wheel", (pointer, currentlyOver, dx, dy, dz, event) => {
       if (dy < 0) {
-        this.cameras.main.zoom *= 1.5;
+        this.cameras.main.zoom *= 1.2;
       } else {
-        this.cameras.main.zoom /= 1.5;
+        this.cameras.main.zoom /= 1.2;
       }
       // clamp the zoom to reasonable values
       this.cameras.main.zoom = Phaser.Math.Clamp(
         this.cameras.main.zoom,
         0.5,
-        2
+        1.2
       );
     });
   }

@@ -136,7 +136,7 @@ h1 {
 
 /* Footer*/
 .site-footer {
-  background-color: #888;
+  background-color: #232222;
   color: #fff;
   padding: 1rem;
   text-align: center;
@@ -154,7 +154,7 @@ h1 {
 }
 
 footer {
-  background-color: #a5a5a5;
+  background-color: #2e1c18;
   color: #fff;
   padding: 15px;
   text-align: center;
@@ -165,40 +165,39 @@ footer {
 
 /* New CSS */
 body, html {
-  margin: 0;
-  padding: 0;
-  height: 100%; /* add this to ensure that body and html are full height as well */
+  height: 100vh; /* Use viewport units to make it responsive to window size */
+  background-image: url('../assets//images/BACKGROUND_UI2.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center -150px; /* Center the background image */
+  background-color: #14205c; /* Set a background color */
+  overflow: hidden; /* Hide scrollbars */
 }
 
 #game-container {
+  position: relative; /* Keep as absolute */
   display: flex;
-  flex-direction: column;
+  flex-direction: row; /* Side by side alignment */
   align-items: center;
-  max-width: 1200px;
-  flex-grow: 1;
-  margin: 0 auto;
-  height: 100vh; /* Changes here */
-}
-
-#game-panel {
-  height: 2cm;
-  background: #f00;  /* Red for visibility, change as needed */
-  width: 100%;
-}
-
-#game-world {
-  flex-grow: 1; /* Take up remaining space after subtracting the statusBar and cardBackground heights */
-  background: rgb(29, 160, 29, 0.1);  /* Green for visibility, change as needed */
-  width: 100%;
-  overflow: auto; 
-  height: 65%;
-  min-height:300px
+  width: 1400px;
+  height: 820px;
+  top: 20px; /* Center vertically, 50vh is half the viewport height and 410px is half the container height */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally with respect to its own size */
 }
 
 #game-table {
-  flex-basis: 45%; /* This will make cardBackground take up 45% of the remaining space after statusBar */
-  background:  rgba(54, 65, 87, 0.5);  /* Blue for visibility, change as needed */
-  width: 100%;
-  height: 35%;
-  overflow: auto; /* if you want it to be scrollable */
+  position: relative;
+  width: 500px;  /* Adjust width */
+  height: 820px; /* Take full height of the parent */
+  margin-left: 160px; /* Space between game-table and game-world */
+  margin-right: 30px; /* Space between game-table and game-world */
+}
+
+#game-world {
+  position: relative;
+  width: 530px;
+  height: 450px;
+  top: -70px; 
+  left: 2px;
 }

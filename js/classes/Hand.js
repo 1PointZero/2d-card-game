@@ -8,8 +8,8 @@ export default class Hand {
     // this.container.sortableChildren = true; // Allows for container's children to have a z-Index
     this.app.stage.addChild(this.container);
 
-    this.height = 150;
-    this.width = 150;
+    this.height = 180;
+    this.width = 120;
 
     // will be a normal button later!!!
     // Create a button to toggle view
@@ -106,11 +106,11 @@ export default class Hand {
 
   arrangeInGrid() {
     const centerX = 70;
-    const centerY = 70;
+    const centerY = 100;
 
-    const cardWidth = this.height * 0.65;
-    const cardHeight = this.width * 0.85;
-    const gap = 0;
+    const cardWidth = this.width;
+    const cardHeight = this.height;
+    const gap = 5;
 
     this.cards.forEach((card, index) => {
       const row = Math.floor(index / 3);

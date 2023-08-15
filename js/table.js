@@ -6,7 +6,7 @@ export default function createTable() {
   const gameTableContainer = document.getElementById("game-table");
 
   const app = new PIXI.Application({
-    background: "#1099bb",
+    backgroundAlpha: 0,
     width: gameTableContainer.offsetWidth * 0.995,
     height: gameTableContainer.offsetHeight * 0.8,
   });
@@ -17,14 +17,15 @@ export default function createTable() {
 
   //later, the Hand gets the Cards from the deck
   const cardPaths = [
-    "../assets/CardTemplate.png",
-    "../assets/CardTemplate.png",
-    "../assets/CardTemplate.png",
-    "../assets/CardTemplate.png",
-    "../assets/CardTemplate.png",
-    "../assets/CardTemplate.png",
-    "../assets/CardTemplate.png",
-    "../assets/CardTemplate.png",
+    "../assets/images/cardsNew/LARGE_CARD_TEMPLATEf1.png",
+    "../assets/images/cardsNew/LARGE_CARD_TEMPLATEf2.png",
+    "../assets/images/cardsNew/LARGE_CARD_TEMPLATEf3.png",
+    "../assets/images/cardsNew/LARGE_CARD_TEMPLATEf4.png",
+    "../assets/images/cardsNew/LARGE_CARD_TEMPLATEf5.png",
+    "../assets/images/cardsNew/LARGE_CARD_TEMPLATEf6.png",
+    "../assets/images/cardsNew/LARGE_CARD_TEMPLATEf7.png",
+    "../assets/images/cardsNew/LARGE_CARD_TEMPLATEf8.png",
+    "../assets/images/cardsNew/LARGE_CARD_TEMPLATEf9.png",
   ];
 
   cardPaths.forEach((path) => {

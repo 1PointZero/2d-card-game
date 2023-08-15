@@ -14,7 +14,7 @@ const gameWorld = document.getElementById("game-world");
 const config = {
   type: Phaser.AUTO,
   parent: "game-world",
-  backgroundColor: "#88aadd", // set a nice blue color here
+  backgroundColor: "#3d3a4c", // "#88aadd", // set a nice blue color here
   width: gameWorld.offsetWidth * 0.995,
   height: gameWorld.offsetHeight * 0.995,
   scene: [World],
